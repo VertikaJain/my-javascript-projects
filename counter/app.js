@@ -1,10 +1,7 @@
 count = 0;
 const value = document.querySelector("#value");
 const btns = document.querySelectorAll(".btn");
-// console.log(btns);
-
 for (let btn of btns) {
-    // console.log(btn);
     btn.addEventListener('click', (event) => {
         const className = event.currentTarget.classList;
         if (className.contains('decrease')) {
@@ -25,7 +22,6 @@ for (let btn of btns) {
         value.textContent = count;
     })
 }
-
 
 /* Using buttons separately.
 const btn_decrease = document.querySelector(".btn.decrease");
