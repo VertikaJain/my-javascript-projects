@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="./../fontawesome-free-5.12.0-web/css/all.min.css"
+    />
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header id="home">
+      <!-- navigation bar and its content -->
+      <nav id="nav">
+        <div class="nav-center">
+          <div class="nav-header">
+            <img src="logo.png" alt="logo" class="logo"/>
+            <button class="nav-toggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+          <div class="links-container">
+            <ul class="links">
+              <li>
+                <a href="#home" class="scroll-link">home</a>
+              </li>
+              <li>
+                <a href="#about" class="scroll-link">about</a>
+              </li>
+              <li>
+                <a href="#services" class="scroll-link">services</a>
+              </li>
+              <li>
+                <a href="#tours" class="scroll-link">tours</a>
+              </li>
+              <li>
+                <a href="#covid" class="scroll-link">Covid19-Precautions</a>
+              </li>
+            </ul>            
+          </div>
+        </div>
+      </nav>
+      <!-- main heading -->
+      <div class="banner">
+        <div class="container">
+          <h1>JS Scroll Project on travel</h1>
+          <p>Any step taken outside our comfort zones is an opportunity to practice the art of peace - and we can build a more peaceful world through Travel!</p>
+          <a href="#tours" class="scroll-link btn btn-white">explore tours</a>
+        </div>
+      </div>
+    </header>
+    <!-- Smooth scroll to sections -->
+    <section id="about" class="section">
+      <div class="title">
+        <h2>about <span>us</span></h2></div>
+    </section>
+    <section id="services" class="section">
+      <div class="title">
+        <h2>our <span>services</span></h2></div>
+    </section>
+    <section id="tours" class="section">
+      <div class="title">
+        <h2>Upcoming <span>tours</span></h2></div>
+    </section>
+    <footer class="section">
+      <p>copyright &copy; Travel & Tours company <span class="date"></span>. all rights reserved</p>
+    </footer>
+    <a href="#home" class="scroll-link top-link">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+    <!-- javascript -->
+    <script src="app.js"></script>
+  </body>
+</html>
+
+<!-- 
+  Learning: Added html content-
+  1. header -> logo, links, nav button, banner(heading, para & button)
+  2. section -> about, services, tours
+  3. footer -> copyright statement, dynamic date 
+  4. back to top button
+ -->
