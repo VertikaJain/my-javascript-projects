@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabs</title>
+
+  <!-- styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <section class="section">
+    <div class="title">
+      <h2>Introduction to NodeJS</h2>
+      <p>Although NodeJS is one of the youngest among the most popular web technologies, it has the largest Open-Source community and the largest Repository of Libraries and Packages.</p>
+    </div>
+    <div class="about-center section-center">
+      <article class="about-img">
+        <img src="node-js.png" alt="about image"/>
+      </article>
+      <article class="about">
+        <div class="btn-container">
+          <button class="tab-btn active" data-id="working">working</button>
+          <button class="tab-btn" data-id="asynchronous">asynchronous</button>
+          <button class="tab-btn" data-id="libuv">libuv</button>
+        </div>
+        <article class="about-content">
+          <div class="content active" id="working">
+            <h4>how Node JS works as a backend?</h4>
+            <p>The Node JS Platform does not follow Request/Response Multi-Threaded Stateless Model. 
+              It follows <b>Single Thread</b> concept with <b>Event Loop</b> Model, to handle multiple concurrent clients. 
+              The Node JS Processing model is mainly based on <b>Javascript Callback mechanism</b>. 
+              It utilizes less resources as compared to multi-threaded model.
+              It is a good choice for building modern solutions based on Micro-services, event queues, jobs, and WebSockets.
+            </p>
+          </div>
+          <div class="content" id="asynchronous">
+            <h4>How it handle multiple requests from clients?</h4>
+            <p>Node JS uses two concepts - <b>Asynchronous & Non-Blocking I/O</b>. A non-blocking call initiates the operation, 
+              leaves it for the OS to complete returning immediately without any results. Asynchronous operations use callback functions, 
+              and return results by creating a wait mechanism in a non-blocking operation.
+              Modern approach uses <b>Async/await</b> technique, to avoid callback hells and handle promises (that involved function chaining).
+            </p>
+          </div>
+          <div class="content" id="libuv">
+            <h4>what is libuv?</h4>
+            <p>A multiplatform Node JS library, built in <b>C language</b>, uses system kernel and implements <b>multiple threads</b>, 
+              with the help of which Node JS uses multithreading indirectly. It highlights the following -</p>
+            <ol>
+              <li>Asynchronous I/O</li>
+              <li>File system events</li>
+              <li>Child processes</li>
+              <li>Signal handling</li>
+              <li>Threading and synchronization primitives.</li>
+            </ol>
+          </div>
+        </article>
+      </article>
+    </div>
+  </section>
+  <!-- javascript -->
+  <script src="app.js"></script>
+</body>
+
+</html>
