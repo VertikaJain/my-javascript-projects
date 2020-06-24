@@ -334,10 +334,11 @@ header {
 }
 #about,
 #services,
-#tours {
+#tours,
+#covid {
   height: 80vh;
 }
-#services {
+#services, #covid {
   background: var(--clr-white);
 }
 footer {
