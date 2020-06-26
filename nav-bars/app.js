@@ -6,6 +6,9 @@
 
 const navToggle = document.querySelector(".nav-toggle");
 const links = document.querySelector(".links");
+links.addEventListener("click", (e) => {
+    e.preventDefault();
+})
 navToggle.addEventListener("click", () => {
     /* if (links.classList.contains("show-links") === false) {
         links.classList.add("show-links");
