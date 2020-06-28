@@ -46,8 +46,10 @@ form.addEventListener("submit", (event) => {
             setToDefault();
         }
         else { // to edit items in the list
-            setAlert("editing", "success");
-
+            editElement.innerHTML = toDoValue;
+            editLocalStorage(editId, toDoValue); // CRUD
+            setAlert("Edit Successful!", "success");
+            setToDefault();
         }
     } else { // if there is no value to edit
         setAlert("Please Enter Item/Task.", "danger");
@@ -84,6 +86,12 @@ setToDefault = () => {
     submitBtn.textContent = "submit";
 };
 editItem = (event) => {
+    const element = event.currentTarget.parentElement.parentElement; // article -> grocery-item class
+    editElement = event.currentTarget.parentElement.previousElementSibling; // gets element right before btnContainer, that is title
+    toDo.value = editElement.innerHTML; // assiging item value to input box
+    submitBtn.textContent = "edit";
+    editFlag = true;
+    editId = element.dataset.id;
 }
 deleteItem = (event) => {
     const delElement = event.currentTarget.parentElement.parentElement;
@@ -104,6 +112,9 @@ addToLocalStorage = (id, value) => {
 removeFromLocalStorage = (id) => {
     // console.log("removeFromLocalStorage", id);
 }
+editLocalStorage = (id, value) => {
+    // console.log("edited local storage", id);
+}
 // ****** SETUP ITEMS **********
 
 
@@ -115,4 +126,5 @@ removeFromLocalStorage = (id) => {
     3. createElement, createAttribute, setAttributeNode
     4. appendChild(), removeChild()
     5. children property of array
+    6. previousElementSibling
 */
