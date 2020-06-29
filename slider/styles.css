@@ -79,11 +79,9 @@ ul {
 a {
   text-decoration: none;
 }
-img:not(.person-img) {
-  width: 100%;
-}
 img {
   display: block;
+  width: 100%;
 }
 
 h1,
@@ -210,13 +208,6 @@ Slider
 .slide h1 {
   font-size: 5rem;
 }
-.person-img {
-  border-radius: 50%;
-  width: 6rem;
-  height: 6rem;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-}
 .slide:nth-child(1) h1 {
   position: absolute;
   top: 50%;
@@ -226,6 +217,12 @@ Slider
 .slide:nth-child(3) {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("./img-2.jpeg") center/cover no-repeat;
+}
+.slide:nth-child(4) h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .btn-container {
   display: flex;
