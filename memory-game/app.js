@@ -48,10 +48,11 @@ const cardArray = [
     img: 'images/backbone.png'
   }
 ]
-
+cardArray.sort(() => 0.5 - Math.random());
 let selectedCards = [], selectedCardIds = [], cardsWon = [];
 const grid = document.querySelector(".grid");
 const result = document.getElementById("result");
+const alert = document.querySelector(".alert");
 
 window.addEventListener("DOMContentLoaded", () => {
   createBoard();
@@ -106,6 +107,7 @@ checkForMatch = () => {
         img.removeEventListener("click", flipCard);
       }
     }
+    setAlert("Card Matched!", "success");
   }
   // CASE 3: ON INCORRECT MATCH OF CARDS
   else {
@@ -118,7 +120,8 @@ checkForMatch = () => {
 
   // on completion of game
   if (cardsWon.length === cardArray.length / 2) {
-    // alert 
+    setAlert("Congratulations! You have won the game!", "success");
+    result.textContent = cardsWon.length + "! You have won the game!";
   }
 }
 
@@ -128,5 +131,16 @@ setLogo = (id0, id1) => {
   setTimeout(() => {
     imgs[id0].setAttribute("src", "images/logo.png");
     imgs[id1].setAttribute("src", "images/logo.png");
+  }, 1000);
+  setAlert("Card does not match!", "danger");
+}
+
+// method to display alert message
+setAlert = (text, styleClass) => {
+  alert.textContent = text;
+  alert.classList.add(`alert-${styleClass}`);
+  setTimeout(() => {
+    alert.textContent = ``;
+    alert.classList.remove(`alert-${styleClass}`);
   }, 1000);
 }

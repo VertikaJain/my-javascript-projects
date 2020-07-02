@@ -6,10 +6,25 @@
   padding: 50px;
 }
 
-h3 {
+h3, p {
   padding-left: 50px;
+  text-transform: capitalize;
 }
 
 body {
   background-color:#FCFCC9;
+}
+
+.alert {
+  margin-bottom: 1rem;
+  height: 1.25rem;
+  border-radius: 0.25rem;
+}
+.alert-danger {
+  color: #721c24;
+  background: #f8d7da;
+}
+.alert-success {
+  color: #155724;
+  background: #d4edda;
 }
