@@ -38,3 +38,7 @@
       height: 200px;
     }
   }
+  .mole {
+    background-image: url('mole.jpg');
+    background-size: cover;
+  }
