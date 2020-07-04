@@ -2,14 +2,33 @@ const grid = document.querySelector(".grid");
 const mole = document.querySelectorAll(".mole");
 const score = document.getElementById("score");
 const timeLeft = document.getElementById("time-left");
+const time = document.querySelector(".time");
 
 let result = 0;
 let currentTime = timeLeft.textContent; //60
 
+// ------ EVENT LISTENERS ------
+
 window.addEventListener("DOMContentLoaded", () => {
     createGrid();
-    randomSquare();
+    let timerId = setInterval(randomSquare, 500);
+    let countdown = setInterval(() => {
+        timeLeft.textContent = --currentTime;
+        if (currentTime <= 0) {
+            time.textContent="game over!";
+            grid.removeEventListener("mouseup", whackMole);
+            clearInterval(countdown);
+            clearInterval(timerId);
+        }
+    }, 1000);
 });
+
+grid.addEventListener("mouseup", whackMole = (e) => {
+    if (e.target.classList.contains("mole")) {
+        result++;
+        score.textContent = result;
+    }
+})
 
 // ------ METHODS ------
 
@@ -33,9 +52,4 @@ randomSquare = () => {
     }
     let square = squares[Math.floor(Math.random() * 9)]; // adding mole image at random position on the grid
     square.classList.add("mole");
-    square.addEventListener("click", () => {
-        result++;
-        score.textContent = result;
-
-    })
 }
