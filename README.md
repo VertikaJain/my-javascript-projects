@@ -3,7 +3,7 @@
 ## Milestones:
 * Starting with Mini Projects on **Vanilla Javascript**.
 * I have covered the first 15 Vanilla JavaScript projects with the help of [this](https://www.youtube.com/watch?v=3PHXvlpOkf4&feature=youtu.be) tutorial.
-* Currently I am working on small Game projects using Vanilla JS using [this](https://www.youtube.com/watch?v=lhNdUVh3qCc&t=5687s) tutorial.
+* Currently I am working on small Game projects using Vanilla JS using [this](https://www.youtube.com/watch?v=lhNdUVh3qCc&t) tutorial.
 
 ## Goal: 
 * Knowledge and practice of Full Stack Development.
