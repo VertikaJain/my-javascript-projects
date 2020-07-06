@@ -1,0 +1,30 @@
+.section-center {
+    text-transform: capitalize;
+    margin: 0 auto;
+    max-width: 25%;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.grid {
+    border: 2px solid;
+    display: flex;
+    flex-wrap: wrap;
+    height: 300px;
+    width: 350px;
+  }
+  
+.grid div {
+    height: 50px;
+    width: 50px;
+  }
+
+.player-one {
+    background-color: red;
+    border-radius: 10px;
+  }
+
+.player-two {
+    background-color: blue;
+    border-radius: 10px;
+  }
