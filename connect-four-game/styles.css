@@ -28,3 +28,6 @@
     background-color: blue;
     border-radius: 25px;
   }
+.show-result {
+    visibility: hidden;
+}
