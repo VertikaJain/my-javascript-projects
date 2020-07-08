@@ -1,5 +1,4 @@
 const grid = document.querySelector(".grid");
-const boxes = document.querySelectorAll(".grid div");
 const currentPlayer = document.getElementById("current-player");
 const result = document.getElementById("result");
 let currPlayer = parseInt(currentPlayer.textContent);
@@ -53,9 +52,7 @@ onBoxClick = () => {
                     currPlayer = 1;
                     currentPlayer.textContent = 1;
                 }
-                checkBoard(id);
-            } else {
-                console.log("unreachable box or reclick!"); // ALERT HERE
+                checkBoard();
             }
         })
     }
@@ -64,7 +61,6 @@ onBoxClick = () => {
 // method to check if 4 connected balls are clicked in a row/column
 checkBoard = () => {
     const boxes = document.querySelectorAll(".grid div");
-
     //make const that shows all winning arrays
     const winningArrays = [
         [0, 1, 2, 3], [41, 40, 39, 38], [7, 8, 9, 10], [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24], [21, 22, 23, 24],
@@ -84,21 +80,21 @@ checkBoard = () => {
         const square3 = boxes[winningArrays[y][2]];
         const square4 = boxes[winningArrays[y][3]];
 
-        if (square1.classList.contains('player-one') &&
-            square2.classList.contains('player-one') &&
-            square3.classList.contains('player-one') &&
-            square4.classList.contains('player-one')) {
+        if (square1.classList.contains('player-one') && square2.classList.contains('player-one') &&
+            square3.classList.contains('player-one') && square4.classList.contains('player-one')) {
             result.innerHTML = 'Player one wins!';
             result.classList.remove("show-result");
-            location.reload();
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
         }
-        else if (square1.classList.contains('player-two') &&
-            square2.classList.contains('player-two') &&
-            square3.classList.contains('player-two') &&
-            square4.classList.contains('player-two')) {
+        else if (square1.classList.contains('player-two') && square2.classList.contains('player-two') &&
+            square3.classList.contains('player-two') && square4.classList.contains('player-two')) {
             result.innerHTML = 'Player two wins!';
             result.classList.remove("show-result");
-            location.reload();
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
         }
     }
 }
