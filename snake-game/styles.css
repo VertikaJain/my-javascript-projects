@@ -7,7 +7,7 @@ body {
     margin: 0;
     background-color: black;
 }
-#game-border {
+#game-board {
     background-color: #CCC;
     width: 100vmin;
     height: 100vmin;
