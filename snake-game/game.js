@@ -25,10 +25,11 @@ let update = () => {
 
 // method to display snake on the basis of update()
 let draw = () => {
+    gameBoard.innerHTML = ""; // clearing the grid every second to clear the snake
     drawSnake(gameBoard);
 }
 
-/* 
+/*
     Learnings:
     1. import functionality in JS.
     2. requestAnimationFrame() for game animation -> returns current time in miliseconds
