@@ -4,6 +4,11 @@ import {
     draw as drawSnake
 } from "./snake.js";
 
+import { 
+    update as updateFood, 
+    draw as drawFood 
+ } from "./food.js";
+
 const gameBoard = document.getElementById("game-board");
 let lastRenderTime = 0;
 
@@ -21,12 +26,14 @@ window.requestAnimationFrame(main);
 // method to update the size & position of snake; & position of food; & decision of win/loss
 let update = () => {
     updateSnake();
+    updateFood();
 }
 
 // method to display snake on the basis of update()
 let draw = () => {
     gameBoard.innerHTML = ""; // clearing the grid every second to clear the snake
     drawSnake(gameBoard);
+    drawFood(gameBoard);
 }
 
 /*
