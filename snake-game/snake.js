@@ -33,8 +33,9 @@ export let expandSnake = (expandAmount) => {
     newSegments += expandAmount;
 }
 
-export let snakeOnFood = (foodPosition) => {
-    return snakeBodySegments.some(segment => {
+export let snakeOnFood = (foodPosition, { ignoreHead = false } = {}) => {
+    return snakeBodySegments.some((segment, index) => {
+        if (index === 0 && ignoreHead === true) return false;
         return checkSnakeAndFoodPosition(foodPosition, segment);
     })
 }
@@ -52,10 +53,20 @@ let addSnakeSegments = () => {
     newSegments = 0;
 }
 
+// method to return the snake head's current position to check for grid boundaries.
+export let getSnakeHead = () => {
+    return snakeBodySegments[0];
+}
+
+export let snakeIntersection = () => {
+    return snakeOnFood(snakeBodySegments[0], { ignoreHead: true });
+}
+
 /*
     Learnings:
     1. export functionality in JS.
     2. Updating the gridRowStart & gridColumnStart properties of CSS using JS.
     3. Using spread operator to avoid overwriting on the original array
     4. some() method returns true or false based on specified condition for an array.
+    5. Declaring optional parameter.
 */

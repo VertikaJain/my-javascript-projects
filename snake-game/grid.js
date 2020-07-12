@@ -7,3 +7,8 @@ export let getRandomGridPosition = () => {
         y: Math.floor(Math.random() * gridSize) + 1
     }
 }
+
+// method to check if snake head is outside the grid of game.
+export let outsideGrid = (snakeHead) => {
+    return (snakeHead.x < 1 || snakeHead.x > gridSize || snakeHead.y < 1 || snakeHead.y > gridSize)
+}
