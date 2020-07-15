@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Invaders</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <header>welcome to the space invaders game</header>
+    <div class="game-wrapper">
+      <div class="game"></div>
+      <div class="game-won">
+        <h1>Congratulations!</h1>
+        <h2>you won the game</h2>
+        <button class="btn" onclick="window.location.reload()">restart</button>
+      </div>
+      <div class="game-over">
+        <h1>GAME OVER</h1>
+        <h2>you lost the game</h2>
+        <button class="btn" onclick="window.location.reload()">restart</button>
+      </div>
+    </div>
+    <footer>use the arrow buttons to move left/right</footer>
+  </div>
+  <script src="game.js"></script>
+</body>
+
+</html>
