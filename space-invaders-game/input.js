@@ -10,7 +10,9 @@ const GAME_STATE = { // position
     spacePress: false,
     gameWidth: GAME_WIDTH,
     lastTime: Date.now(),
-    playerMaxSpeed: PLAYER_MAX_SPEED
+    playerMaxSpeed: PLAYER_MAX_SPEED,
+    lasers: [],
+    playerCoolDown: 0
 };
 
 window.addEventListener("keydown", (event) => {
