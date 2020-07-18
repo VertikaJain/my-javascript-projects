@@ -12,7 +12,8 @@ const GAME_STATE = { // position
     lastTime: Date.now(),
     playerMaxSpeed: PLAYER_MAX_SPEED,
     lasers: [],
-    playerCoolDown: 0
+    playerCoolDown: 0,
+    enemies: []
 };
 
 window.addEventListener("keydown", (event) => {
