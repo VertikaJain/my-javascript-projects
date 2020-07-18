@@ -1,5 +1,6 @@
 import { setPosition } from "./game.js";
 import { getGameStateInputs } from "./input.js";
+import { destroy as destroyEnemy } from "./enemy.js";
 
 const GAME_STATE = getGameStateInputs();
 const LASER_MAX_SPEED = 300;
@@ -28,6 +29,16 @@ export let update = (deltaTime, gameContainer) => {
         if (laser.y < 0) {
             destroyLaser(gameContainer, laser);
         }
+        const r1 = laser.laserElement.getBoundingClientRect(); // getBoundingClientRect() method returns the size of an element & its position relative to the viewport.
+        for (let enemy of GAME_STATE.enemies) {
+            if (enemy.isDestroyed) continue;
+            const r2 = enemy.enemyElement.getBoundingClientRect();
+            if (checkIntersection(r1, r2)) { // when laser hits the enemy
+                destroyEnemy(gameContainer, enemy);
+                destroyLaser(gameContainer, laser);
+                break;
+            }
+        }
     }
     GAME_STATE.lasers = GAME_STATE.lasers.filter(laser => !laser.isDestroyed); // necessary to filter the GAME_STATE or else it will result to error
 }
@@ -36,4 +47,9 @@ export let update = (deltaTime, gameContainer) => {
 let destroyLaser = (gameContainer, laser) => {
     gameContainer.removeChild(laser.laserElement); // remove the laser element from the DOM
     laser.isDestroyed = true;
+}
+
+// hit testing -> process of determining wheather one element on screen touches / intersects with another element.
+let checkIntersection = (r1, r2) => {
+    return !(r2.left > r1.right || r2.right < r1.left || r2.top > r1.bottom || r2.bottom < r1.top);
 }

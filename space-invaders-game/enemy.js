@@ -21,4 +21,11 @@ export let update = (deltaTime, gameContainer) => {
         const y = enemy.enemyRow + dy;
         enemy.enemyElement.style.transform = `translate(${x}px, ${y}px)`;
     }
+    GAME_STATE.enemies = GAME_STATE.enemies.filter(enemy => !enemy.isDestroyed); // necessary to filter the GAME_STATE or else it will result to error
+}
+
+// method to destroy enemy on hit by laser
+export let destroy = (gameContainer, enemy) => {
+    gameContainer.removeChild(enemy.enemyElement); // remove the enemy element from the DOM
+    enemy.isDestroyed = true;
 }
