@@ -5,6 +5,7 @@ import {
     create as createEnemy,
     update as updateEnemy
 } from "./enemy.js";
+import { updateEnemyLaser } from "./enemyLaser.js";
 
 const gameContainer = document.querySelector(".game");
 const GAME_STATE = getGameStateInputs();
@@ -38,6 +39,7 @@ let update = (currentTime) => {
     updatePlayer(deltaTime, gameContainer);
     updateLasers(deltaTime, gameContainer);
     updateEnemy(deltaTime, gameContainer);
+    updateEnemyLaser(deltaTime, gameContainer);
     GAME_STATE.lastTime = currentTime;
     window.requestAnimationFrame(update);
 }

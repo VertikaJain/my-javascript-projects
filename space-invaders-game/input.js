@@ -1,6 +1,7 @@
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
 const PLAYER_MAX_SPEED = 500;
+const LASER_MAX_SPEED = 300;
 
 const GAME_STATE = { // position 
     x: GAME_WIDTH / 2, // at the center of screen
@@ -13,7 +14,10 @@ const GAME_STATE = { // position
     playerMaxSpeed: PLAYER_MAX_SPEED,
     lasers: [],
     playerCoolDown: 0,
-    enemies: []
+    enemies: [],
+    enemyLasers: [],
+    laserMaxSpeed: LASER_MAX_SPEED,
+    gameHeight: GAME_HEIGHT
 };
 
 window.addEventListener("keydown", (event) => {

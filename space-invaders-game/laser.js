@@ -3,7 +3,6 @@ import { getGameStateInputs } from "./input.js";
 import { destroy as destroyEnemy } from "./enemy.js";
 
 const GAME_STATE = getGameStateInputs();
-const LASER_MAX_SPEED = 300;
 
 // method to create laser on click of space button
 export let createLaser = (gameContainer, x, y) => {
@@ -23,7 +22,7 @@ export let update = (deltaTime, gameContainer) => {
     const lasers = GAME_STATE.lasers;
     // loops through the laser objects stored in game state (these are not DOM elements, instead they contain DOM elements)
     for (let laser of lasers) {
-        laser.y -= deltaTime * LASER_MAX_SPEED;
+        laser.y -= deltaTime * GAME_STATE.laserMaxSpeed;
         laser.laserElement.style.transform = `translate(${laser.x}px, ${laser.y}px)`; //setPosition
         // if laser crosses the max (technically min) value of y-axis, then delete it to avoid unnecessary DOM elements of laser
         if (laser.y < 0) {
@@ -44,7 +43,7 @@ export let update = (deltaTime, gameContainer) => {
 }
 
 // method to delete existing laser from DOM
-let destroyLaser = (gameContainer, laser) => {
+export let destroyLaser = (gameContainer, laser) => {
     gameContainer.removeChild(laser.laserElement); // remove the laser element from the DOM
     laser.isDestroyed = true;
 }
