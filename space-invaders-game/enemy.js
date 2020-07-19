@@ -2,7 +2,7 @@ import { getGameStateInputs } from "./input.js";
 import { createEnemyLaser } from "./enemyLaser.js";
 
 const GAME_STATE = getGameStateInputs();
-const ENEMY_COOLDOWN = 2.0;
+const ENEMY_COOLDOWN = 2.0; // firing rate -> once in 2 seconds
 
 // method to create enemy at the specified row & column of screen
 export let create = (gameContainer, enemyColumn, enemyRow) => {
@@ -10,12 +10,12 @@ export let create = (gameContainer, enemyColumn, enemyRow) => {
     enemyElement.src = "img/enemy-blue-1.png";
     enemyElement.className = "enemy";
     gameContainer.appendChild(enemyElement);
-    GAME_STATE.enemies.push({ enemyColumn, enemyRow, coolDown: ENEMY_COOLDOWN, enemyElement });
+    GAME_STATE.enemies.push({ enemyColumn, enemyRow, coolDown: randomCoolDown(0.5, ENEMY_COOLDOWN), enemyElement });
     enemyElement.style.transform = `translate(${enemyColumn}px, ${enemyRow}px)`;
 }
 
 // method to update enemy movement on the screen
-export let update = (deltaTime, gameContainer) => {    
+export let update = (deltaTime, gameContainer) => {
     // using sin & cos methods to rotate the enemy constantly after converting ms to seconds
     const dx = Math.sin(GAME_STATE.lastTime / 1000) * 50;
     const dy = Math.cos(GAME_STATE.lastTime / 1000) * 10;
@@ -38,6 +38,10 @@ export let destroy = (gameContainer, enemy) => {
     gameContainer.removeChild(enemy.enemyElement); // remove the enemy element from the DOM
     enemy.isDestroyed = true;
 }
+
+// assigning random numbers to coolDown value will lead to different firing rate from each element
+// b/w 0.5 to 2.0 => 0.5 + random() * 1.5
+let randomCoolDown = (min = 0, max = 1) => { return Math.random() * (max - min); }
 
 /*
     Learnings:
