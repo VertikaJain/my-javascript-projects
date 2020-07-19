@@ -48,7 +48,7 @@ export let destroyLaser = (gameContainer, laser) => {
     laser.isDestroyed = true;
 }
 
-// hit testing -> process of determining wheather one element on screen touches / intersects with another element.
-let checkIntersection = (r1, r2) => {
+// hit testing -> process of determining whether one element on screen touches / intersects with another element.
+export let checkIntersection = (r1, r2) => {
     return !(r2.left > r1.right || r2.right < r1.left || r2.top > r1.bottom || r2.bottom < r1.top);
 }

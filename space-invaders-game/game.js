@@ -1,7 +1,7 @@
 import { getGameStateInputs } from "./input.js";
 import { update as updatePlayer } from "./move.js";
 import { update as updateLasers } from "./laser.js";
-import { 
+import {
     create as createEnemy,
     update as updateEnemy
 } from "./enemy.js";
@@ -35,7 +35,9 @@ createPlayer();
 
 // method to update the movement of the player -> game loop.
 let update = (currentTime) => {
-    let deltaTime = (currentTime - GAME_STATE.lastTime) / 1000; // convert the time difference from ms to s.
+    if (GAME_STATE.gameOver) document.querySelector(".game-over").style.display = "block"; // pop up game-over box
+    if (GAME_STATE.enemies.length <= 0) document.querySelector(".game-won").style.display = "block"; // pop up game-win box
+    const deltaTime = (currentTime - GAME_STATE.lastTime) / 1000; // convert the time difference from ms to s.
     updatePlayer(deltaTime, gameContainer);
     updateLasers(deltaTime, gameContainer);
     updateEnemy(deltaTime, gameContainer);
@@ -52,4 +54,12 @@ for (let row = 0; row < ENEMIES_PER_COLUMN; row++) { //total 3 rows.
         const enemyColumn = column * enemySpacing + ENEMY_HORIZONTAL_PADDING; // x
         createEnemy(gameContainer, enemyColumn, enemyRow);
     }
+}
+
+// method to remove player element from DOM once hit by enemy laser
+export let destroyPlayer = (gameContainer, player) => {
+    gameContainer.removeChild(player);
+    GAME_STATE.gameOver = true;
+    const audio = new Audio("sound/sfx-lose.ogg");
+    audio.play();
 }
