@@ -1,13 +1,10 @@
 import { setPosition } from "./game.js";
-import { getGameStateInputs } from "./input.js";
 import { destroy as destroyEnemy } from "./enemy.js";
 
-const GAME_STATE = getGameStateInputs();
-
 // method to create laser on click of space button
-export let createLaser = (gameContainer, x, y) => {
+export let createLaser = (GAME_STATE, gameContainer, x, y) => {
     const laserElement = document.createElement("img");
-    laserElement.src = "img/laser-blue-1.png";
+    laserElement.src = "img/laser-blue.png";
     laserElement.className = "laser";
     gameContainer.appendChild(laserElement);
     const laser = { x, y, laserElement };
@@ -18,7 +15,7 @@ export let createLaser = (gameContainer, x, y) => {
 }
 
 // method to update laser i.e. move it on the game screen w.r.t x-axis
-export let update = (deltaTime, gameContainer) => {
+export let update = (GAME_STATE, deltaTime, gameContainer) => {
     const lasers = GAME_STATE.lasers;
     // loops through the laser objects stored in game state (these are not DOM elements, instead they contain DOM elements)
     for (let laser of lasers) {
