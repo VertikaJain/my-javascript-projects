@@ -1,6 +1,6 @@
 import { createEnemyLaser } from "./enemyLaser.js";
 
-const ENEMY_COOLDOWN = 10.0; // firing rate -> once in 2 seconds
+const ENEMY_COOLDOWN = 2.0; // firing rate -> once in 2 seconds
 
 // method to create enemy at the specified row & column of screen
 export let create = (GAME_STATE, gameContainer, enemyColumn, enemyRow) => {
