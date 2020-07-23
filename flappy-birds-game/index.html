@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlappyBird</title>
+</head>
+
+<body style="display: grid; justify-content: center; align-items: center; color: green;" onload="draw()">
+    <h3 style="text-align: center;">Play Flappy Bird Game Here</h3>
+    <canvas id="myCanvas" width="288" height="512">Your browser doesn't include support for the canvas element.</canvas>
+    <script src="game.js"></script>
+</body>
+
+</html>
+
+<!-- 
+    Learnings:
+    1. <canvas> element  creates a fixed-size drawing surface that exposes one or more rendering contexts, 
+    which are used to create and manipulate the content shown.
+    2. Alternate text can be added in b/w the <canvas></canvas> tags.
+    3. Inline CSS in <body> tags.
+    4. onload property enables the execution of draw() once the page's elements finish loading.
+ -->
