@@ -5,11 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlappyBird</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body style="display: grid; justify-content: center; align-items: center; color: green;" onload="draw()">
     <h3 style="text-align: center;">Play Flappy Bird Game Here</h3>
-    <canvas id="myCanvas" width="288" height="512">Your browser doesn't include support for the canvas element.</canvas>
+    <div class="game-wrapper">
+        <canvas id="myCanvas" width="288" height="512">Your browser doesn't include support for the canvas
+            element.</canvas>
+        <div class="game-over">
+            <h2>GAME OVER</h2>
+            <h3 id="scores">Score: </h3>
+            <button class="btn" onclick="window.location.reload()">restart</button>
+        </div>
+    </div>
     <script src="game.js"></script>
 </body>
 

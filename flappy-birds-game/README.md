@@ -5,7 +5,8 @@
 1. Use <canvas> tags to create a canvas for the game.
 2. Inline CSS used to align the canvas & heading to the center of the page.
 3. Use onload property in <body> that enables the execution of draw() once the page's elements finish loading.
-4. Bind game.js file using <script> tags.
+4. Add div for game-over, including the score heading & Restart button.
+5. Bind game.js file using <script> tags.
 
 ## JavaScript Code
 
@@ -17,10 +18,13 @@
 6. Create an array of pipes[], to draw multiple pipes on the canvas, by updating the x & y coordinates using Math.random().
 7. Use coordinates of the bird and pipes to check for collision of these elements.
     1. If the bird's position on x-axis is equivant to the position of pipe or in-between the width of pipe, and
-    2. if the bird's position on y-axis is greater than or equal to the position of North pipe, OR if it is less than or equal to the position of South pipe
-    3. Check if the bird reaches the foreGround.
+    2. If the bird's position on y-axis is greater than or equal to the position of North pipe, OR if it is less than or equal to the position of South pipe
+    3. If the bird reaches the foreGround.
+    4. If the bird crosses/reaches the top of canvas box.
 8. Increase score once the pipe crosses the bird without collision.
 9. Display the updated score using fillText() on the canvas.
+10. Add Score Over pop-in box, using a game-wrapper in HTML, and display it at the time of collision, with a button to restart the game.
+11. Neccessary to use return statement on collision to stop the game loop.
 
 
 ## Credits

@@ -1,0 +1,53 @@
+.game-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(22, 22, 22);
+  }
+
+.game-over {
+    display: none;
+    position: absolute;
+    background: yellowgreen;
+    color: red;
+    padding: 20px 50px;
+    box-shadow: 0 2px 10px rgba(235, 89, 5, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    animation: pop-in 1s;
+    font-family: Verdana;
+  }
+  
+.btn {
+    border: 2px solid #ee9e26;
+    border-radius: 3px;
+    box-shadow: 0 2px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(
+      to bottom,
+      #fff 0%,
+      #fff 49%,
+      #f5f5f5 50%,
+      #eee 100%
+    );
+    padding: 10px 40px;
+    font-family: 14px Verdana;
+    text-transform: capitalize;
+  }
+
+@keyframes pop-in {
+    0% {
+      opacity: 0;
+      transform: translate(0, -50px);
+    }
+    10% {
+      opacity: 1;
+    }
+    50% {
+      transform: translate(0, 50px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  

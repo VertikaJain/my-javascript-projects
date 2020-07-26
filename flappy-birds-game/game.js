@@ -50,8 +50,11 @@ let draw = () => {
         // check collision of elements
         if (birdState.x + bird.width >= pipe.x && birdState.x <= pipe.x + pipeNorth.width
             && (birdState.y <= pipe.y + pipeNorth.height || birdState.y + bird.height >= pipe.y + gap)
-            || birdState.y + bird.height >= canvasContainer.height - foreGround.height) {
-            location.reload();
+            || birdState.y + bird.height >= canvasContainer.height - foreGround.height
+            || birdState.y + bird.height <= 0) {
+            document.querySelector(".game-over").style.display = "block";
+            document.getElementById("scores").textContent += score;
+            return;
         }
         // increase score when pipe crosses the position of bird
         if (pipe.x === 5) {
