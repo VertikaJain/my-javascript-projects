@@ -1,0 +1,14 @@
+.grid {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rosybrown;
+}
+
+.grid div {
+    height: 40px;
+    width: 40px;
+}
+
+/* each box to be of 40px, and grid has 10x10 boxes*/
