@@ -1,7 +1,14 @@
+body {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
 .grid {
     height: 400px;
     width: 400px;
     display: flex;
+    margin-top: 100px;
     flex-wrap: wrap;
     background-color: rosybrown;
 }
@@ -9,6 +16,10 @@
 .grid div {
     height: 40px;
     width: 40px;
+}
+
+.bomb {
+    background-color: purple;
 }
 
 /* each box to be of 40px, and grid has 10x10 boxes*/
