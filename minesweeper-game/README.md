@@ -15,6 +15,9 @@
 1. Create a constant grid Container using querySelector(".grid"), and a const GAME_WIDTH to specify the game size while creating the game board.
 2. Use document.addEventListener("DOMContentLoaded"()=>{ } ) for the rest of the game functionality.
 3. Create the board by adding 100 boxes to it, using createElement(), setAttribute() & AppendChild() in the for loop.
+4. Create a ShuffledArray that includes bomb & other elements at random position, and add it to each box in the for loop using box.classList.add().
+5. In method addNumbersToBoard(), specify conditions to add number of neighbouring bombs to the each valid (non-bomb) box. 
+7. Use setAttribute() to add the "total" attribute and it's value to each valid box element.
 
 ## Resources
 
