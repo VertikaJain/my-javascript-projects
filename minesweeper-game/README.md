@@ -18,6 +18,9 @@
 4. Create a ShuffledArray that includes bomb & other elements at random position, and add it to each box in the for loop using box.classList.add().
 5. In method addNumbersToBoard(), specify conditions to add number of neighbouring bombs to the each valid (non-bomb) box. 
 7. Use setAttribute() to add the "total" attribute and it's value to each valid box element.
+8. Add eventListener for click event, and add a new class "checked" on click of a valid box.
+9. Assign value of "total" to the valid box using getAttribute(), and then call a new method checkBox() for recursive steps.
+10. Create a new file recurse.js and export the checkBox() method.
 
 ## Resources
 

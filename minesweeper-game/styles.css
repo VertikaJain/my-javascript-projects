@@ -22,4 +22,9 @@ body {
     background-color: purple;
 }
 
+.checked {
+    background-color: white;
+    text-align: center;
+}
+
 /* each box to be of 40px, and grid has 10x10 boxes*/

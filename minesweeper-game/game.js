@@ -1,3 +1,5 @@
+import { checkBox } from "./recurse.js";
+
 const gridContainer = document.querySelector(".grid");
 const GRID_WIDTH = 100;
 let bombCount = 20;
@@ -8,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 // method to create game board
-createBoard = () => {
+let createBoard = () => {
     let bombsArray = new Array(bombCount).fill("bomb");
     let emptyArray = new Array(GRID_WIDTH - bombCount).fill("valid");
     let gameArray = bombsArray.concat(emptyArray);
@@ -22,7 +24,7 @@ createBoard = () => {
 }
 
 // method to add number of neighbouring bombs to the each valid (non-bomb) box.
-addNumbersToBoard = () => {
+let addNumbersToBoard = () => {
     const boxElements = document.querySelectorAll(".bomb,.valid");
     const width = 10; // width of one column
     for (let box of boxElements) {
@@ -53,7 +55,15 @@ addNumbersToBoard = () => {
     }
 }
 
+// actions to be taken when a box is clicked.
 window.addEventListener("click", event => {
+    if (event.target.classList.contains("checked") || event.target.classList.contains("flag")) return;
+    if (event.target.classList.contains("bomb")) alert("game over");
+    if (event.target.classList.contains("valid")) {
+        event.target.innerHTML = event.target.getAttribute("total") == 0 ? "" : event.target.getAttribute("total");
+        checkBox(event.target);
+    }
+    event.target.classList.add("checked");
 })
 
 /* Learnings:
