@@ -20,10 +20,11 @@ body {
 
 .bomb {
     background-color: purple;
+    text-align: center;
 }
 
 .checked {
-    background-color: white;
+    background-color: rgb(243, 215, 238);
     text-align: center;
 }
 

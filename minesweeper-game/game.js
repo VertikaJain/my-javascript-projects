@@ -3,6 +3,7 @@ import { checkBox } from "./recurse.js";
 const gridContainer = document.querySelector(".grid");
 const GRID_WIDTH = 100;
 let bombCount = 20;
+let isGameOver = false;
 
 document.addEventListener("DOMContentLoaded", () => {
     createBoard();
@@ -17,19 +18,21 @@ let createBoard = () => {
     let shuffledArray = gameArray.sort(() => Math.random() - 0.5);
     for (let i = 0; i < GRID_WIDTH; i++) {
         const box = document.createElement("div");
-        box.setAttribute("data-id", i);
+        box.setAttribute("id", i);
         box.classList.add(shuffledArray[i]); // add bomb/valid classes to the boxes on the grid
         gridContainer.appendChild(box);
+        box.addEventListener("click", () => click(box));
     }
 }
 
+export const boxElements = gridContainer.children;
+export const width = 10; // width of one column
+
 // method to add number of neighbouring bombs to the each valid (non-bomb) box.
 let addNumbersToBoard = () => {
-    const boxElements = document.querySelectorAll(".bomb,.valid");
-    const width = 10; // width of one column
     for (let box of boxElements) {
         let totalBombs = 0;
-        let id = parseInt(box.dataset.id);
+        let id = parseInt(box.id);
         const isLeftEdge = (id % width === 0); // returns true if element is present at left edge
         const isRightEdge = (id % width === width - 1);  // returns true if element is present at right edge
 
@@ -56,15 +59,29 @@ let addNumbersToBoard = () => {
 }
 
 // actions to be taken when a box is clicked.
-window.addEventListener("click", event => {
-    if (event.target.classList.contains("checked") || event.target.classList.contains("flag")) return;
-    if (event.target.classList.contains("bomb")) alert("game over");
-    if (event.target.classList.contains("valid")) {
-        event.target.innerHTML = event.target.getAttribute("total") == 0 ? "" : event.target.getAttribute("total");
-        checkBox(event.target);
+export let click = box => {
+    if (isGameOver) return;
+    if (box.classList.contains("checked") || box.classList.contains("flag")) return;
+    if (box.classList.contains("bomb")) gameOver(box);
+    if (box.classList.contains("valid")) {
+        box.classList.add("checked");
+        let total = box.getAttribute("total");
+        if (total != 0) {
+            box.innerHTML = total;
+            return;
+        }
+        checkBox(box);
     }
-    event.target.classList.add("checked");
-})
+    box.classList.add("checked");
+}
+
+let gameOver = box => {
+    alert("game over");
+    isGameOver = true;
+    for (let box of boxElements) {
+        if (box.classList.contains("bomb")) box.innerHTML = "💣";
+    }
+}
 
 /* Learnings:
     1. fill() method changes all elements in an array to the specified static value.
