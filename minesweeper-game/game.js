@@ -4,6 +4,7 @@ const gridContainer = document.querySelector(".grid");
 const GRID_WIDTH = 100;
 let bombCount = 20;
 let isGameOver = false;
+let flag = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
     createBoard();
@@ -22,11 +23,32 @@ let createBoard = () => {
         box.classList.add(shuffledArray[i]); // add bomb/valid classes to the boxes on the grid
         gridContainer.appendChild(box);
         box.addEventListener("click", () => click(box));
+        box.oncontextmenu = event => {
+            event.preventDefault();
+            addFlag(box); // add flag on right click
+        }
     }
 }
 
 export const boxElements = gridContainer.children;
 export const width = 10; // width of one column
+
+// method to add flags when right clicked on a box containing bomb.
+let addFlag = box => {
+    if (isGameOver) return;
+    if (!box.classList.contains("checked") && (flag < bombCount)) {
+        if (!box.classList.contains("flag")) {
+            box.classList.add("flag");
+            box.innerHTML = "🚩";
+            flag++;
+            gameWin();
+        } else {
+            box.classList.remove("flag");
+            box.innerHTML = "";
+            flag--;
+        }
+    }
+}
 
 // method to add number of neighbouring bombs to the each valid (non-bomb) box.
 let addNumbersToBoard = () => {
@@ -75,6 +97,7 @@ export let click = box => {
     box.classList.add("checked");
 }
 
+// method to declare game Over when player clicks on bomb element.
 let gameOver = box => {
     alert("game over");
     isGameOver = true;
@@ -83,8 +106,24 @@ let gameOver = box => {
     }
 }
 
+// method to declare game Win when the number of flags matches the bomb count.
+let gameWin = () => {
+    let flagBombMatchCount = 0;
+    for (let box of boxElements) {
+        if (box.classList.contains("flag") && box.classList.contains("bomb")) {
+            flagBombMatchCount++;
+        }
+        if (flagBombMatchCount === bombCount) {
+            alert("you won");
+            isGameOver = true;
+        }
+    }
+}
+
 /* Learnings:
     1. fill() method changes all elements in an array to the specified static value.
     2. parseInt() used to convert the given value to Integer.
     3. contains() to check if the element has the specified value.
+    4. getAttribute() used to access the attribute specified for the given element.
+    5. onContextMenu property fires when the player clicks the right mouse button, opening the context menu.
 */
