@@ -1,10 +1,14 @@
 import { checkBox } from "./recurse.js";
 
 const gridContainer = document.querySelector(".grid");
+const result = document.querySelector(".result");
+const button = document.getElementById("btn");
+
 const GRID_WIDTH = 100;
 let bombCount = 20;
 let isGameOver = false;
 let flag = 0;
+let resultCount = 1;
 
 document.addEventListener("DOMContentLoaded", () => {
     createBoard();
@@ -22,7 +26,10 @@ let createBoard = () => {
         box.setAttribute("id", i);
         box.classList.add(shuffledArray[i]); // add bomb/valid classes to the boxes on the grid
         gridContainer.appendChild(box);
-        box.addEventListener("click", () => click(box));
+        box.addEventListener("click", () => {
+            click(box);
+            if (box.classList.contains("valid")) result.innerHTML = "Your Scores: " + resultCount++;
+        });
         box.oncontextmenu = event => {
             event.preventDefault();
             addFlag(box); // add flag on right click
@@ -84,12 +91,18 @@ let addNumbersToBoard = () => {
 export let click = box => {
     if (isGameOver) return;
     if (box.classList.contains("checked") || box.classList.contains("flag")) return;
-    if (box.classList.contains("bomb")) gameOver(box);
+    if (box.classList.contains("bomb")) gameOver();
     if (box.classList.contains("valid")) {
         box.classList.add("checked");
         let total = box.getAttribute("total");
         if (total != 0) {
             box.innerHTML = total;
+            if (total == 1) box.style.color = "blue";
+            if (total == 2) box.style.color = "green";
+            if (total == 3) box.style.color = "red";
+            if (total == 4) box.style.color = "purple";
+            if (total == 5) box.style.color = "maroon";
+            if (total == 6) box.style.color = "darkgreen";
             return;
         }
         checkBox(box);
@@ -98,12 +111,17 @@ export let click = box => {
 }
 
 // method to declare game Over when player clicks on bomb element.
-let gameOver = box => {
-    alert("game over");
+let gameOver = () => {
+    result.innerHTML = "GAME OVER!";
+    result.style.color = "red";
     isGameOver = true;
-    for (let box of boxElements) {
-        if (box.classList.contains("bomb")) box.innerHTML = "💣";
-    }
+    for (let box of boxElements)
+        if (box.classList.contains("bomb")) {
+            box.innerHTML = "💣";
+            box.classList.remove('bomb')
+            box.classList.add('checked')
+        }
+    button.style.display = "block";
 }
 
 // method to declare game Win when the number of flags matches the bomb count.
@@ -114,7 +132,9 @@ let gameWin = () => {
             flagBombMatchCount++;
         }
         if (flagBombMatchCount === bombCount) {
-            alert("you won");
+            result.innerHTML = "CONGRATULATIONS! YOU WON!";
+            result.style.color = "purple";
+            button.style.display = "block";
             isGameOver = true;
         }
     }

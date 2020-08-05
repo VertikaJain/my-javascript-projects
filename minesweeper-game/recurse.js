@@ -1,4 +1,4 @@
-import { click, boxElements, width } from "./game.js";
+import { click, width } from "./game.js";
 
 // implementing recursion to display total value of neighbouring boxes of the clicked box
 export let checkBox = box => {

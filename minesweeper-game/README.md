@@ -2,13 +2,17 @@
 
 ## HTML
 
-1. Create <div> with grid class in the body of HTML.
+1. Create div with grid class in the body of HTML.
 2. Elements will be dynamically added to this grid div using JS.
+3. Add a result heading to display Scores of player.
+4. Create a button Restart that will reload the game.
 
 ## CSS
 
 1. Create a grid layout with 10x10 boxes of 40px each, hence grid size will be 400x400px
 2. Specify the size of each box separately, using .grid div { height: 40px; width: 40px; }
+3. Align the headings & elements to the center.
+4. Make text as bold and use border for better visualization of the game's grid.
 
 ## JavaScript Code
 
@@ -26,6 +30,8 @@
 13. Create addFlag() method, to add flags on the boxes that have bomb element and are right clicked by the player, to mark as safe. 
 14. Use onContextMenu property in createBoard(), that calls addFlag() on right click on a box with bomb element.
 15. Create a gameWin() method to check if the number of flags added by the player matches the total number of bombs. If yes, then the player is declared as Winner. This method is called everytime a flag is added to the game board.
+16. Update the Scores on click of a valid box in the game.
+17. Enable the button restart when the player wins or looses the game.
 
 ## Resources
 
